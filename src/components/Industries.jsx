@@ -1,3 +1,5 @@
+import ScrollReveal from './ScrollReveal'
+
 export default function Industries() {
   const items = [
     { title: 'Transportation', desc: 'Traffic analysis, vehicle counting, and infrastructure monitoring', features: ['Vehicle classification', 'Turning movement counts'] },
@@ -11,26 +13,30 @@ export default function Industries() {
   ]
 
   return (
-    <section className="relative py-16">
+    <section className="relative py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Industries</h2>
-          <p className="mt-2 text-slate-300 max-w-3xl">Purpose-built for transportation, security, retail, industrial monitoring, and more.</p>
-        </div>
+        <ScrollReveal>
+          <div className="mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Industries</h2>
+            <p className="mt-2 text-slate-300 max-w-3xl">Purpose-built for transportation, security, retail, industrial monitoring, and more.</p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {items.map((item) => (
-            <div key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-6">
-              <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-              <p className="mt-2 text-slate-300">{item.desc}</p>
-              {item.features?.length > 0 && (
-                <ul className="mt-4 grid grid-cols-2 gap-2 text-sm text-slate-300">
-                  {item.features.map(f => (
-                    <li key={f} className="rounded bg-white/5 px-3 py-2">{f}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
+          {items.map((item, i) => (
+            <ScrollReveal key={item.title} delay={i * 0.04}>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.08] transition-colors">
+                <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                <p className="mt-2 text-slate-300">{item.desc}</p>
+                {item.features?.length > 0 && (
+                  <ul className="mt-4 grid grid-cols-2 gap-2 text-sm text-slate-300">
+                    {item.features.map(f => (
+                      <li key={f} className="rounded bg-white/5 px-3 py-2">{f}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
